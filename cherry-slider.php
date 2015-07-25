@@ -32,14 +32,20 @@ $rcsl_plugin_name = 'Cherry slider';
 
 if ( is_admin() ) {
 	include( MFP_PLUGIN_PATH . 'include/installer.php' );
+	include( MFP_PLUGIN_PATH . 'slider-list.php' );
+	include( MFP_PLUGIN_PATH . 'slider-create.php' );
+	include( MFP_PLUGIN_PATH . 'slider-update.php' );
 	
-	
+	/*
 	include( MFP_PLUGIN_PATH . 'inc/scripts.php' );
     include( MFP_PLUGIN_PATH . 'inc/data-processing.php' );
     include( MFP_PLUGIN_PATH . 'inc/admin-page.php');
+	*/
 } else {
+	/*
 	include( MFP_PLUGIN_PATH . 'inc/css-loader.php');
 	include( MFP_PLUGIN_PATH . 'inc/display-functions.php');
+	*/
 }
 
 

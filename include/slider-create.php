@@ -1,5 +1,5 @@
 <?php
-function sinetiks_schools_create () {
+function sinetiks_schools_create() {
 $id = $_POST["id"];
 $name = $_POST["name"];
 //insert

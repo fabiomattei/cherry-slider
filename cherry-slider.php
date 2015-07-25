@@ -11,7 +11,7 @@ License: GPLv2
 */
 
 /*******************************************
-* Plugin PATH
+* Plugin CONSTANT
 ********************************************/
 define( 'RCSL_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'RCSL_PLUGIN_URL',  plugins_url( __FILE__ ) );

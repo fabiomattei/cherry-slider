@@ -1,14 +1,5 @@
 <?php
 
-/*
-Plugin Name: Cherry Slider
-Plugin URI: http://www.redcherries.net/cherry-slider
-Description: TODO
-Version: 1.0.0
-Author: RedCherries
-Author URI: http://www.redcherries.net/
-*/
-
 
 // Add the page to the admin menu.
 add_action('admin_menu', 'ink_menu_page' );

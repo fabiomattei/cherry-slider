@@ -31,11 +31,15 @@ $rcsl_plugin_name = 'Cherry slider';
 ********************************************/
 
 if ( is_admin() ) {
-	include( MFP_PLUGIN_PATH . 'include/installer.php' );
-	include( MFP_PLUGIN_PATH . 'slider-list.php' );
-	include( MFP_PLUGIN_PATH . 'slider-create.php' );
-	include( MFP_PLUGIN_PATH . 'slider-update.php' );
+	include( 'include/installer.php' );
+	include( 'include/admin-menu.php' );
 	
+	/*
+	include( MFP_PLUGIN_PATH . 'include/slider-list.php' );
+	include( MFP_PLUGIN_PATH . 'include/slider-create.php' );
+	include( MFP_PLUGIN_PATH . 'include/slider-update.php' );
+	*/
+
 	/*
 	include( MFP_PLUGIN_PATH . 'inc/scripts.php' );
     include( MFP_PLUGIN_PATH . 'inc/data-processing.php' );

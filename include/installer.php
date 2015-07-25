@@ -1,11 +1,10 @@
 <?php
-	
 
-register_activation_hook( __FILE__, 'rcsl_items_create_table' )
-
-// Create / Update the items table 
+/**
+ * Create the necessary table 
+ */
 function rcsl_items_create_table() {
-	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	global $wpdb;
 	
 	$tablename = $wpdb->prefix . 'rcslsliders';
@@ -32,3 +31,4 @@ function rcsl_items_create_table() {
 	
 	dbDelta($sql); 
 }
+register_activation_hook( __FILE__, 'rcsl_items_create_table' );

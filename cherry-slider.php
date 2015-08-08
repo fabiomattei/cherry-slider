@@ -14,7 +14,8 @@ License: GPLv2
 * Plugin CONSTANT
 ********************************************/
 define( 'RCSL_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-define( 'RCSL_PLUGIN_URL',  plugins_url( __FILE__ ) );
+define( 'RCSL_PLUGIN_URL' , plugins_url( __FILE__ ) );
+define( 'RCSL_TEXT_DOMAIN', 'cherry-slider' );
 
 /*******************************************
 * Global Variables
@@ -32,7 +33,8 @@ $rcsl_plugin_name = 'Cherry slider';
 
 if ( is_admin() ) {
 	include( 'include/installer.php' );
-	include( 'include/admin-menu.php' );
+	include( 'include/register-posttype.php' );
+	//include( 'include/admin-menu.php' );
 	
 	/*
 	include( MFP_PLUGIN_PATH . 'include/slider-list.php' );
@@ -47,7 +49,7 @@ if ( is_admin() ) {
 	*/
 } else {
 	// include for client side
-	include( 'inc/display-functions.php');
+	include( 'include/display-functions.php');
 	
 }
 

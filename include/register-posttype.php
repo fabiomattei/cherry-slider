@@ -38,7 +38,7 @@ $args = array(
 register_post_type( RCSL_TEXT_DOMAIN, $args );
 
 /**
- * Managin columns for post type list 
+ * Managin columns for post type list in the administration page
  */
 function cherry_slider_columns( $columns ){
     $columns = array(
@@ -53,9 +53,9 @@ function cherry_slider_columns( $columns ){
 add_filter( 'manage_edit-cherry-slider_columns', 'cherry_slider_columns' );
 
 /**
- * Populating columns with the right content
+ * Populating columns in the list with the right content in the administration page
  */
-function ris_gallery_manage_columns( $column, $post_id ){
+function cherry_slider_manage_columns( $column, $post_id ){
     global $post;
     switch( $column ) {
       case 'shortcode' :
@@ -66,4 +66,4 @@ function ris_gallery_manage_columns( $column, $post_id ){
     }
 }
 
-add_action( 'manage_cherry-slider_posts_custom_column', 'ris_gallery_manage_columns' , 10, 2 );
+add_action( 'manage_cherry-slider_posts_custom_column', 'cherry_slider_manage_columns' , 10, 2 );

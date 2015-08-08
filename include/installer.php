@@ -3,32 +3,20 @@
 /**
  * Create the necessary table 
  */
-function rcsl_items_create_table() {
-	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-	global $wpdb;
+function rcsl_items_create_settings() {
 	
-	$tablename = $wpdb->prefix . 'rcslsliders';
+	/*
+    $DefaultSettingsArray = serialize( array(
+		"RCSL_Slide_Title"   		=> 1,
+		"RCSL_Auto_Slideshow"   	=> 1,
+		"RCSL_Sliding_Arrow"   		=> 1,
+		"RCSL_Slider_Navigation"   	=> 1,
+		"RCSL_Navigation_Button"   	=> 1,
+		"RCSL_Slider_Width"   		=> "1000",
+		"RCSL_Slider_Height"   		=> "500"
+    ));
+    add_option("RCSL_Settings", $DefaultSettingsArray);
+	*/
 	
-	$sql = "CREATE TABLE `$tablename` (
-		`rcsl_id` int(11) NOT NULL AUTO_INCREMENT,
-		`rcsl_title` varchar(100) NOT NULL,
-		`rcsl_description` varchar(100) NOT NULL,
-		`rcsl_options` TEXT,
-		PRIMARY KEY (`rcsl_id`)
-	);";
-	
-	dbDelta($sql);
-	
-	$tablename = $wpdb->prefix . 'rcslpictures';
-	
-	$sql = "CREATE TABLE `$tablename` (
-		`rcpc_id` int(11) NOT NULL AUTO_INCREMENT,
-		`rcpc_rcslid` int(11) NOT NULL AUTO_INCREMENT,
-		`rcpc_post_id` int(11) NOT NULL,
-		`rcpc_title` varchar(100) NOT NULL,
-		PRIMARY KEY (`rcpc_id`)
-	);";
-	
-	dbDelta($sql); 
 }
-register_activation_hook( __FILE__, 'rcsl_items_create_table' );
+register_activation_hook( __FILE__, 'rcsl_items_create_settings' );

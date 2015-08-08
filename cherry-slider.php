@@ -46,11 +46,16 @@ if ( is_admin() ) {
     include( MFP_PLUGIN_PATH . 'inc/admin-page.php');
 	*/
 } else {
-	/*
-	include( MFP_PLUGIN_PATH . 'inc/css-loader.php');
-	include( MFP_PLUGIN_PATH . 'inc/display-functions.php');
-	*/
+	// include for client side
+	include( 'inc/display-functions.php');
+	
 }
 
+
+/*******************************************
+* Images dimentions
+********************************************/
+add_image_size( 'rpggallery_admin_thumb', 300, 300, true ); 
+add_image_size( 'rpggallery_admin_large', 500, 9999 ); 
 
 

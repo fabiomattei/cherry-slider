@@ -67,3 +67,33 @@ function cherry_slider_manage_columns( $column, $post_id ){
 }
 
 add_action( 'manage_cherry-slider_posts_custom_column', 'cherry_slider_manage_columns' , 10, 2 );
+
+/**
+ * Adding all metaboxes necessasry for the slider
+ */
+function add_all_cherry_slider_meta_boxes() {
+	add_meta_box( __('Add Images', RCSL_TEXT_DOMAIN), __('Add Images', RCSL_TEXT_DOMAIN),  'rcsl_generate_add_image_meta_box_function' , RCSL_SLUG, 'normal', 'low' );
+	add_meta_box( __('Apply Setting On Ultimate Responsive Image Slider', RCSL_TEXT_DOMAIN), __('Apply Setting On Ultimate Responsive Image Slider', RCSL_TEXT_DOMAIN), 'rcsl_settings_meta_box_function' , RCSL_SLUG, 'normal', 'low');
+	add_meta_box ( __('Copy Image Slider Shortcode', RCSL_TEXT_DOMAIN), __('Copy Image Slider Shortcode', RCSL_TEXT_DOMAIN), 'rcsl_shotcode_meta_box_function' , RCSL_SLUG, 'side', 'low');
+}
+
+add_action( 'add_meta_boxes', 'add_all_cherry_slider_meta_boxes' );
+
+/**
+ * This function display Add New Image interface
+ * Also loads all saved gallery photos into photo gallery
+ */
+function rcsl_generate_add_image_meta_box_function( $post ) {
+	require_once( 'rcsl-addimage-meta-box.php' );
+}
+
+function rcsl_settings_meta_box_function( $post ) { 
+	require_once( 'rcsl-settings-meta-box.php' );
+}
+
+function rcsl_shotcode_meta_box_function() { ?>
+	<p><?php _e("Use below shortcode in any Page/Post to publish your slider", RCSL_TEXT_DOMAIN);?></p>
+	<input readonly="readonly" type="text" value="<?php echo "[URIS id=".get_the_ID()."]"; ?>">
+	<?php 
+}
+

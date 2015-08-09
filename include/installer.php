@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Create the necessary table 
+ * Create the necessary default settings 
  */
 function rcsl_items_create_settings() {
 	

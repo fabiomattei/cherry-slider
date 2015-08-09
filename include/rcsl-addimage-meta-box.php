@@ -2,19 +2,19 @@
         <ul id="rpg_gallery_thumbs" class="clearfix">
 			<?php
 			/* load saved photos into ris */
-			$WRIS_AllPhotosDetails = unserialize(base64_decode(get_post_meta( $post->ID, 'ris_all_photos_details', true)));
+			$RCSL_AllPhotosDetails = unserialize(base64_decode(get_post_meta( $post->ID, 'rcsl_all_photos_details', true)));
 			$TotalImages =  get_post_meta( $post->ID, 'ris_total_images_count', true );
 			if($TotalImages) {
-				foreach($WRIS_AllPhotosDetails as $WRIS_SinglePhotoDetails) {
-					$name = $WRIS_SinglePhotoDetails['rpgp_image_label'];
-					$desc = $WRIS_SinglePhotoDetails['rpgp_image_desc'];						
+				foreach($RCSL_AllPhotosDetails as $RCSL_SinglePhotoDetails) {
+					$name = $RCSL_SinglePhotoDetails['rpgp_image_label'];
+					$desc = $RCSL_SinglePhotoDetails['rpgp_image_desc'];						
 					$UniqueString = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
-					$url = $WRIS_SinglePhotoDetails['rpgp_image_url'];
-					$url1 = $WRIS_SinglePhotoDetails['rpggallery_admin_thumb'];
-					$url3 = $WRIS_SinglePhotoDetails['rpggallery_admin_large'];
+					$url = $RCSL_SinglePhotoDetails['rpgp_image_url'];
+					$url1 = $RCSL_SinglePhotoDetails['rpggallery_admin_thumb'];
+					$url3 = $RCSL_SinglePhotoDetails['rpggallery_admin_large'];
 					?>
 					
-					<li class="rpg-image-entry" id="rpg_img">
+					<li class="rcsl-image-entry" id="rpg_img">
 						<a class="gallery_remove rpggallery_remove" href="#gallery_remove" id="rpg_remove_bt" ><img src="<?php echo RCSL_PLUGIN_URL.'img/close-icon.png'; ?>" /></a>
 						<div class="rpp-admin-inner-div1" >
 							<img src="<?php echo $url1; ?>" class="rpg-meta-image" alt=""  style="">
@@ -45,7 +45,7 @@
     </div>
 	
 	<!--Add New Image Button-->
-	<div class="rpg-image-entry add_rpg_new_image" id="rpg_gallery_upload_button" data-uploader_title="Upload Image" data-uploader_button_text="Select" >
+	<div class="rcsl-image-entry add_rpg_new_image" id="rpg_gallery_upload_button" data-uploader_title="Upload Image" data-uploader_button_text="Select" >
 		<div class="dashicons dashicons-plus"></div>
 		<p>
 			<?php _e('Add New Images', RCSL_TEXT_DOMAIN); ?>

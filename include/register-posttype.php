@@ -105,7 +105,7 @@ function rcsl_generate_add_image_meta_box_function( $post ) {?>
             <ul id="rpg_gallery_thumbs" class="clearfix">
 				<?php
 				/* load saved photos into ris */
-				$WRIS_AllPhotosDetails = unserialize(base64_decode(get_post_meta( $post->ID, 'ris_all_photos_details', true)));
+				$WRIS_AllPhotosDetails = unserialize(base64_decode(get_post_meta( $post->ID, 'rcsl_all_photos_details', true)));
 				$TotalImages =  get_post_meta( $post->ID, 'ris_total_images_count', true );
 				if($TotalImages) {
 					foreach($WRIS_AllPhotosDetails as $WRIS_SinglePhotoDetails) {
@@ -117,7 +117,7 @@ function rcsl_generate_add_image_meta_box_function( $post ) {?>
 						$url3 = $WRIS_SinglePhotoDetails['rpggallery_admin_large'];
 						?>
 						
-						<li class="rpg-image-entry" id="rpg_img">
+						<li class="rcsl-image-entry" id="rpg_img">
 							<a class="gallery_remove rpggallery_remove" href="#gallery_remove" id="rpg_remove_bt" ><img src="<?php echo RCSL_PLUGIN_URL.'img/close-icon.png'; ?>" /></a>
 							<div class="rpp-admin-inner-div1" >
 								<img src="<?php echo $url1; ?>" class="rpg-meta-image" alt=""  style="">
@@ -148,7 +148,7 @@ function rcsl_generate_add_image_meta_box_function( $post ) {?>
         </div>
 		
 		<!--Add New Image Button-->
-		<div class="rpg-image-entry add_rpg_new_image" id="rpg_gallery_upload_button" data-uploader_title="Upload Image" data-uploader_button_text="Select" >
+		<div class="rcsl-image-entry add_rpg_new_image" id="rpg_gallery_upload_button" data-uploader_title="Upload Image" data-uploader_button_text="Select" >
 			<div class="dashicons dashicons-plus"></div>
 			<p>
 				<?php _e('Add New Images', WRIS_TEXT_DOMAIN); ?>
@@ -174,7 +174,7 @@ function admin_thumb_uris( $id ) {
         $image3 = wp_get_attachment_image_src($id, 'rpggallery_admin_large', true);
 		$UniqueString = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
         ?>
-		<li class="rpg-image-entry" id="rpg_img">
+		<li class="rcsl-image-entry" id="rpg_img">
 			<a class="gallery_remove rpggallery_remove" href="#gallery_remove" id="rpg_remove_bt" ><img src="<?php echo RCSL_PLUGIN_URL.'img/close-icon.png'; ?>" /></a>
 			<div class="rpp-admin-inner-div1" >
 				<img src="<?php echo $image1[0]; ?>" class="rpg-meta-image" alt=""  style="">
@@ -222,13 +222,13 @@ if(isset($PostID) && isset($_POST['rpgp_image_url'])) {
 					'rpggallery_admin_large' => $url3,
 				);
 			}
-			update_post_meta($PostID, 'ris_all_photos_details', base64_encode(serialize($ImagesArray)));
+			update_post_meta($PostID, 'rcsl_all_photos_details', base64_encode(serialize($ImagesArray)));
 			update_post_meta($PostID, 'ris_total_images_count', $TotalImages);
 		} else {
 			$TotalImages = 0;
 			update_post_meta($PostID, 'ris_total_images_count', $TotalImages);
 			$ImagesArray = array();
-			update_post_meta($PostID, 'ris_all_photos_details', base64_encode(serialize($ImagesArray)));
+			update_post_meta($PostID, 'rcsl_all_photos_details', base64_encode(serialize($ImagesArray)));
 		}
 	}
 }

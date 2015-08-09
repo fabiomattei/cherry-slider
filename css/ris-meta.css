@@ -1,4 +1,4 @@
-.rpg-image-entry {
+.rcsl-image-entry {
     background: #fff;
     
     margin: 0 15px 15px 0;
@@ -15,7 +15,7 @@
 	width:100%;
 	
 }
-.rpg-image-entry img{
+.rcsl-image-entry img{
 	width:100%;
 	max-height:240px;
 	display:block;
@@ -32,7 +32,7 @@
     cursor: move;
 }
 
-.rpg-image-entry .button-primary{
+.rcsl-image-entry .button-primary{
 width:100%;
 margin-bottom:10px;
 }
@@ -42,7 +42,7 @@ padding: 9px;
 
 }
 
-.rpg-image-entry .gallery_remove {
+.rcsl-image-entry .gallery_remove {
    
     display: block;
     float: right;
@@ -106,7 +106,7 @@ display:block;
 }
 
 @media (max-width:766px) {
-	.rpg-image-entry {
+	.rcsl-image-entry {
     background: #fff;
     
     margin: 0 15px 15px 0;
@@ -120,7 +120,7 @@ display:block;
 }
 
 @media (max-width:460px) {
-	.rpg-image-entry {
+	.rcsl-image-entry {
     background: #fff;
     
     margin: 0 15px 15px 0;

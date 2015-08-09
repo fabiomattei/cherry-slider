@@ -68,6 +68,23 @@ function cherry_slider_manage_columns( $column, $post_id ){
 
 add_action( 'manage_cherry-slider_posts_custom_column', 'cherry_slider_manage_columns' , 10, 2 );
 
+
+function rcsl_admin_enqueue_scripts() {
+    wp_enqueue_script('media-upload');
+    wp_enqueue_script('rpgp-media-uploader-js', RCSL_PLUGIN_URL . 'js/rcsl-media-uploader.js', array('jquery'));
+	wp_enqueue_media();
+	
+	//custom add image box css
+	wp_enqueue_style('ris-meta-css', RCSL_PLUGIN_URL.'css/ris-meta.css');
+	
+	//tool-tip js & css
+	wp_enqueue_script('ris-tool-tip-js',RCSL_PLUGIN_URL.'tooltip/jquery.darktooltip.min.js', array('jquery'));
+	wp_enqueue_style('ris-tool-tip-css', RCSL_PLUGIN_URL.'tooltip/darktooltip.min.css');
+}
+
+add_action('admin_enqueue_scripts', 'rcsl_admin_enqueue_scripts' );
+add_action('admin_enqueue_scripts', 'rcsl_admin_enqueue_scripts' );
+
 /**
  * Adding all metaboxes necessasry for the slider
  */
@@ -83,8 +100,62 @@ add_action( 'add_meta_boxes', 'add_all_cherry_slider_meta_boxes' );
  * This function display Add New Image interface
  * Also loads all saved gallery photos into photo gallery
  */
-function rcsl_generate_add_image_meta_box_function( $post ) {
-	require_once( 'rcsl-addimage-meta-box.php' );
+function rcsl_generate_add_image_meta_box_function( $post ) {?>
+		<div id="rpggallery_container">
+            <ul id="rpg_gallery_thumbs" class="clearfix">
+				<?php
+				/* load saved photos into ris */
+				$WRIS_AllPhotosDetails = unserialize(base64_decode(get_post_meta( $post->ID, 'ris_all_photos_details', true)));
+				$TotalImages =  get_post_meta( $post->ID, 'ris_total_images_count', true );
+				if($TotalImages) {
+					foreach($WRIS_AllPhotosDetails as $WRIS_SinglePhotoDetails) {
+						$name = $WRIS_SinglePhotoDetails['rpgp_image_label'];
+						$desc = $WRIS_SinglePhotoDetails['rpgp_image_desc'];						
+						$UniqueString = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
+						$url = $WRIS_SinglePhotoDetails['rpgp_image_url'];
+						$url1 = $WRIS_SinglePhotoDetails['rpggallery_admin_thumb'];
+						$url3 = $WRIS_SinglePhotoDetails['rpggallery_admin_large'];
+						?>
+						
+						<li class="rpg-image-entry" id="rpg_img">
+							<a class="gallery_remove rpggallery_remove" href="#gallery_remove" id="rpg_remove_bt" ><img src="<?php echo  WRIS_PLUGIN_URL.'img/Close-icon.png'; ?>" /></a>
+							<div class="rpp-admin-inner-div1" >
+								<img src="<?php echo $url1; ?>" class="rpg-meta-image" alt=""  style="">
+								<input type="hidden" id="unique_string[]" name="unique_string[]" value="<?php echo $UniqueString; ?>" />
+								<!--<input type="button" id="upload-background-<?php //echo $UniqueString; ?>" name="upload-background-<?php //echo $UniqueString; ?>" value="Upload Image" class="button-primary " onClick="ris_weblizar_image('<?php //echo $UniqueString; ?>')" />-->
+							</div>
+							<div class="rpp-admin-inner-div2" >
+								<input type="text" id="rpgp_image_url[]" name="rpgp_image_url[]" class="rpg_label_text"  value="<?php echo $url; ?>"  readonly="readonly" style="display:none;" />
+								<input type="text" id="rpggallery_admin_thumb[]" name="rpggallery_admin_thumb[]" class="rpg_label_text"  value="<?php echo $url1; ?>"  readonly="readonly" style="display:none;" />
+								<input type="text" id="rpggallery_admin_large[]" name="rpggallery_admin_large[]" class="rpg_label_text"  value="<?php echo $url3; ?>"  readonly="readonly" style="display:none;" />
+								<p>
+									<label>Slide Title</label>
+									<input type="text" id="rpgp_image_label[]" name="rpgp_image_label[]" value="<?php echo $name; ?>" placeholder="Enter Slide Title" class="rpg_label_text">
+								</p>
+								<p>
+									<label>Slide Descriptions</label>
+									<textarea rows="4" cols="50" id="rpgp_image_desc[]" name="rpgp_image_desc[]" placeholder="Enter Slide Descriptions" class="rpg_label_text"><?php echo $desc; ?></textarea>
+								</p>
+							</div>
+						</li>
+						<?php
+					} // end of foreach
+				} else {
+					$TotalImages = 0;
+				}
+				?>
+            </ul>
+        </div>
+		
+		<!--Add New Image Button-->
+		<div class="rpg-image-entry add_rpg_new_image" id="rpg_gallery_upload_button" data-uploader_title="Upload Image" data-uploader_button_text="Select" >
+			<div class="dashicons dashicons-plus"></div>
+			<p>
+				<?php _e('Add New Images', WRIS_TEXT_DOMAIN); ?>
+			</p>
+		</div>
+		<div style="clear:left;"></div>
+        <?php
 }
 
 function rcsl_settings_meta_box_function( $post ) { 
@@ -97,3 +168,97 @@ function rcsl_shotcode_meta_box_function() { ?>
 	<?php 
 }
 
+function admin_thumb_uris( $id ) {
+		$image  = wp_get_attachment_image_src($id, 'rpggallery_admin_original', true);
+        $image1 = wp_get_attachment_image_src($id, 'rpggallery_admin_thumb', true);
+        $image3 = wp_get_attachment_image_src($id, 'rpggallery_admin_large', true);
+		$UniqueString = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
+        ?>
+		<li class="rpg-image-entry" id="rpg_img">
+			<a class="gallery_remove rpggallery_remove" href="#gallery_remove" id="rpg_remove_bt" ><img src="<?php echo  WRIS_PLUGIN_URL.'img/Close-icon.png'; ?>" /></a>
+			<div class="rpp-admin-inner-div1" >
+				<img src="<?php echo $image1[0]; ?>" class="rpg-meta-image" alt=""  style="">
+				<!--<input type="button" id="upload-background-<?php //echo $UniqueString; ?>" name="upload-background-<?php //echo $UniqueString; ?>" value="Upload Image" class="button-primary " onClick="ris_weblizar_image('<?php //echo $UniqueString; ?>')" />-->
+				</div>
+			<div class="rpp-admin-inner-div1" >
+				<input type="text" id="rpgp_image_url[]" name="rpgp_image_url[]" class="rpg_label_text"  value="<?php echo $image[0]; ?>"  readonly="readonly" style="display:none;" />
+				<input type="text" id="rpggallery_admin_thumb[]" name="rpggallery_admin_thumb[]" class="rpg_label_text"  value="<?php echo $image1[0]; ?>"  readonly="readonly" style="display:none;" />
+				<input type="text" id="rpggallery_admin_large[]" name="rpggallery_admin_large[]" class="rpg_label_text"  value="<?php echo $image3[0]; ?>"  readonly="readonly" style="display:none;" />
+				<p>
+					<label>Slide Title</label>
+					<input type="text" id="rpgp_image_label[]" name="rpgp_image_label[]" placeholder="Enter Slide Title Here" class="rpg_label_text">
+				</p>
+				<p>
+					<label>Slide Description</label>
+					<textarea rows="4" cols="50" id="rpgp_image_desc[]" name="rpgp_image_desc[]" placeholder="Enter Slide Description Here" class="rpg_label_text"></textarea>
+				</p>
+			</div>
+		</li>
+        <?php
+    }
+
+function ajax_get_thumbnail_uris() {
+    echo admin_thumb_uris( $_POST['imageid'] );
+    die;
+}
+
+function add_image_meta_box_save($PostID) {
+if(isset($PostID) && isset($_POST['rpgp_image_url'])) {
+		$TotalImages = count($_POST['rpgp_image_url']);
+		$ImagesArray = array();
+		if($TotalImages) {
+			for($i=0; $i < $TotalImages; $i++) {
+				$image_label = stripslashes($_POST['rpgp_image_label'][$i]);
+				$image_desc = stripslashes($_POST['rpgp_image_desc'][$i]);
+				$url = $_POST['rpgp_image_url'][$i];
+				$url1 = $_POST['rpggallery_admin_thumb'][$i];
+				$url3 = $_POST['rpggallery_admin_large'][$i];
+				$ImagesArray[] = array(
+					'rpgp_image_label' => $image_label,
+					'rpgp_image_desc' => $image_desc,
+					'rpgp_image_url' => $url,
+					'rpggallery_admin_thumb' => $url1,
+					'rpggallery_admin_large' => $url3,
+				);
+			}
+			update_post_meta($PostID, 'ris_all_photos_details', base64_encode(serialize($ImagesArray)));
+			update_post_meta($PostID, 'ris_total_images_count', $TotalImages);
+		} else {
+			$TotalImages = 0;
+			update_post_meta($PostID, 'ris_total_images_count', $TotalImages);
+			$ImagesArray = array();
+			update_post_meta($PostID, 'ris_all_photos_details', base64_encode(serialize($ImagesArray)));
+		}
+	}
+}
+
+//save settings meta box values
+function ris_settings_meta_save($PostID) {
+	if(isset($PostID) && isset($_POST['wl_action']) == "wl-save-settings") {
+
+		$RCSL_Slide_Title				=	$_POST['wl-l3-slide-title'];
+		$RCSL_Auto_Slideshow			=	$_POST['wl-l3-auto-slide'];
+		$RCSL_Sliding_Arrow				=	$_POST['wl-l3-sliding-arrow'];
+		$RCSL_Slider_Navigation			=	$_POST['wl-l3-navigation'];
+		$RCSL_Navigation_Button			=	$_POST['wl-l3-navigation-button'];
+		$RCSL_Slider_Width				=	$_POST['wl-l3-slider-width'];
+		$RCSL_Slider_Height				=	$_POST['wl-l3-slider-height'];
+		
+		$RCSL_Settings_Array = serialize( array(
+			'RCSL_Slide_Title'  			=> $RCSL_Slide_Title,
+			'RCSL_Auto_Slideshow'  			=> $RCSL_Auto_Slideshow,
+			'RCSL_Sliding_Arrow'  			=> $RCSL_Sliding_Arrow,
+			'RCSL_Slider_Navigation'  		=> $RCSL_Slider_Navigation,
+			'RCSL_Navigation_Button'  		=> $RCSL_Navigation_Button,
+			'RCSL_Slider_Width'  			=> $RCSL_Slider_Width,
+			'RCSL_Slider_Height'  			=> $RCSL_Slider_Height,
+		) );
+		
+		$RCSL_Gallery_Settings = "RCSL_Settings_".$PostID;
+		update_post_meta($PostID, $RCSL_Gallery_Settings, $RCSL_Settings_Array);
+	}
+}
+
+add_action('save_post', 'add_image_meta_box_save', 9, 1);
+add_action('save_post', 'ris_settings_meta_save', 9, 1);
+add_action('wp_ajax_uris_get_thumbnail', 'ajax_get_thumbnail_uris' );

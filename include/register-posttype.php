@@ -201,6 +201,7 @@ function ajax_get_thumbnail_uris() {
     echo admin_thumb_uris( $_POST['imageid'] );
     die;
 }
+add_action('wp_ajax_uris_get_thumbnail', 'ajax_get_thumbnail_uris' );
 
 function add_image_meta_box_save($PostID) {
 if(isset($PostID) && isset($_POST['rpgp_image_url'])) {
@@ -231,6 +232,7 @@ if(isset($PostID) && isset($_POST['rpgp_image_url'])) {
 		}
 	}
 }
+add_action('save_post', 'add_image_meta_box_save', 9, 1);
 
 //save settings meta box values
 function ris_settings_meta_save($PostID) {
@@ -258,7 +260,5 @@ function ris_settings_meta_save($PostID) {
 		update_post_meta($PostID, $RCSL_Gallery_Settings, $RCSL_Settings_Array);
 	}
 }
-
-add_action('save_post', 'add_image_meta_box_save', 9, 1);
 add_action('save_post', 'ris_settings_meta_save', 9, 1);
-add_action('wp_ajax_uris_get_thumbnail', 'ajax_get_thumbnail_uris' );
+

@@ -5,7 +5,6 @@
  */
 function rcsl_items_create_settings() {
 	
-	/*
     $DefaultSettingsArray = serialize( array(
 		"RCSL_Slide_Title"   		=> 1,
 		"RCSL_Auto_Slideshow"   	=> 1,
@@ -16,7 +15,6 @@ function rcsl_items_create_settings() {
 		"RCSL_Slider_Height"   		=> "500"
     ));
     add_option("RCSL_Settings", $DefaultSettingsArray);
-	*/
 	
 }
 register_activation_hook( __FILE__, 'rcsl_items_create_settings' );

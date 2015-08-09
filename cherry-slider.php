@@ -29,36 +29,22 @@ $rcsl_plugin_name = 'Cherry slider';
 // $mfp_options = get_option( 'mfp_settings' );
 
 /*******************************************
-* Includes
-********************************************/
-
-if ( is_admin() ) {
-	include( 'include/installer.php' );
-	include( 'include/register-posttype.php' );
-	//include( 'include/admin-menu.php' );
-	
-	/*
-	include( MFP_PLUGIN_PATH . 'include/slider-list.php' );
-	include( MFP_PLUGIN_PATH . 'include/slider-create.php' );
-	include( MFP_PLUGIN_PATH . 'include/slider-update.php' );
-	*/
-
-	/*
-	include( MFP_PLUGIN_PATH . 'inc/scripts.php' );
-    include( MFP_PLUGIN_PATH . 'inc/data-processing.php' );
-    include( MFP_PLUGIN_PATH . 'inc/admin-page.php');
-	*/
-} else {
-	// include for client side
-	include( 'include/display-functions.php');
-	
-}
-
-
-/*******************************************
 * Images dimentions
 ********************************************/
 add_image_size( 'rpggallery_admin_thumb', 300, 300, true ); 
 add_image_size( 'rpggallery_admin_large', 500, 9999 ); 
 
+/*******************************************
+* Includes
+********************************************/
 
+if ( is_admin() ) {
+	// include admin side
+	include( 'include/installer.php' );
+	include( 'include/register-posttype.php' );
+
+} else {
+	// include for client side
+	include( 'include/display-functions.php');
+	
+}

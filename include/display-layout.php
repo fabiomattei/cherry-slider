@@ -1,15 +1,16 @@
 <?php
+
 /**
  * Load All WRIS Custom Post Type
  */
 $IG_CPT_Name = "ris_gallery";
-$AllSlides = array(  'p' => $Id['id'], 'post_type' => $IG_CPT_Name, 'orderby' => 'ASC');
+$AllSlides = array(  'p' => $Id['id'], 'post_type' => RCSL_SLUG, 'orderby' => 'ASC');
 $loop = new WP_Query( $AllSlides );
 
 while ( $loop->have_posts() ) : $loop->the_post();
 //get the post id
 $post_id = get_the_ID();
-	
+
 /**
  * Get All Slides Details Post Meta
  */

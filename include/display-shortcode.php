@@ -30,8 +30,7 @@ function RCSLShortCode( $Id ) {
 	 * Load Slider Layout Output
 	 */
 	require( "display-layout.php" );
-	?>
-	<?php
+	
 	wp_reset_query();
     return ob_get_clean();
 }

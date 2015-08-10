@@ -13,10 +13,10 @@ function RCSLShortCode( $Id ) {
         $Id['id'] = "";
     } else {
 		$RCSL_Id = $Id['id'];
-		$RCSL_Gallery_Settings_Key = "RCSL_Gallery_Settings_".$RCSL_Id;
+		$RCSL_Gallery_Settings_Key = RCSL_SETTINGS_KEY.$RCSL_Id;
 		$RCSL_Gallery_Settings = unserialize(get_post_meta( $RCSL_Id, $RCSL_Gallery_Settings_Key, true));
 		if($RCSL_Gallery_Settings['RCSL_Slider_Width'] && $RCSL_Gallery_Settings['RCSL_Slider_Height']) {
-			$RCSL_Slide_Title   		    = $RCSL_Gallery_Settings['RCSL_Slide_Title'];
+			$RCSL_Slide_Title   		= $RCSL_Gallery_Settings['RCSL_Slide_Title'];
 			$RCSL_Auto_Slideshow   		= $RCSL_Gallery_Settings['RCSL_Auto_Slideshow'];
 			$RCSL_Sliding_Arrow   		= $RCSL_Gallery_Settings['RCSL_Sliding_Arrow'];
 			$RCSL_Slider_Navigation   	= $RCSL_Gallery_Settings['RCSL_Slider_Navigation'];

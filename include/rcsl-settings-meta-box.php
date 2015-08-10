@@ -3,16 +3,15 @@
  * Load Saved Ultimate Responsive Image Slider Pro Settings
  */
 $PostId = $post->ID;
-$RCSL_Slider_Settings_Key = "RCSL_Slider_Settings_".$PostId;
-$RCSL_Slider_Settings = unserialize(get_post_meta( $PostId, $RCSL_Slider_Settings_Key, true));
+$RCSL_Slider_Settings = unserialize(get_post_meta( $PostId, RCSL_SETTINGS_KEY.$PostId, true));
 if($RCSL_Slider_Settings['RCSL_Slider_Width'] && $RCSL_Slider_Settings['RCSL_Slider_Height']) {
-	$RCSL_Slide_Title   		    = $RCSL_Slider_Settings['RCSL_Slide_Title'];
-	$RCSL_Auto_Slideshow   		    = $RCSL_Slider_Settings['RCSL_Auto_Slideshow'];
-	$RCSL_Sliding_Arrow   		    = $RCSL_Slider_Settings['RCSL_Sliding_Arrow'];
-	$RCSL_Slider_Navigation   	    = $RCSL_Slider_Settings['RCSL_Slider_Navigation'];
-	$RCSL_Navigation_Button   	    = $RCSL_Slider_Settings['RCSL_Navigation_Button'];
-	$RCSL_Slider_Width   		    = $RCSL_Slider_Settings['RCSL_Slider_Width'];
-	$RCSL_Slider_Height   		    = $RCSL_Slider_Settings['RCSL_Slider_Height'];
+	$RCSL_Slide_Title   	= $RCSL_Slider_Settings['RCSL_Slide_Title'];
+	$RCSL_Auto_Slideshow   	= $RCSL_Slider_Settings['RCSL_Auto_Slideshow'];
+	$RCSL_Sliding_Arrow   	= $RCSL_Slider_Settings['RCSL_Sliding_Arrow'];
+	$RCSL_Slider_Navigation = $RCSL_Slider_Settings['RCSL_Slider_Navigation'];
+	$RCSL_Navigation_Button = $RCSL_Slider_Settings['RCSL_Navigation_Button'];
+	$RCSL_Slider_Width   	= $RCSL_Slider_Settings['RCSL_Slider_Width'];
+	$RCSL_Slider_Height   	= $RCSL_Slider_Settings['RCSL_Slider_Height'];
 }
 ?>
 <style>

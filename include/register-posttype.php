@@ -151,7 +151,7 @@ function rcsl_generate_add_image_meta_box_function( $post ) {?>
 		<div class="rcsl-image-entry add_rpg_new_image" id="rpg_gallery_upload_button" data-uploader_title="Upload Image" data-uploader_button_text="Select" >
 			<div class="dashicons dashicons-plus"></div>
 			<p>
-				<?php _e('Add New Images', WRIS_TEXT_DOMAIN); ?>
+				<?php _e('Add New Images', RCSL_TEXT_DOMAIN); ?>
 			</p>
 		</div>
 		<div style="clear:left;"></div>
@@ -178,7 +178,6 @@ function admin_thumb_uris( $id ) {
 			<a class="gallery_remove rpggallery_remove" href="#gallery_remove" id="rpg_remove_bt" ><img src="<?php echo RCSL_PLUGIN_URL.'img/close-icon.png'; ?>" /></a>
 			<div class="rpp-admin-inner-div1" >
 				<img src="<?php echo $image1[0]; ?>" class="rpg-meta-image" alt=""  style="">
-				<!--<input type="button" id="upload-background-<?php //echo $UniqueString; ?>" name="upload-background-<?php //echo $UniqueString; ?>" value="Upload Image" class="button-primary " onClick="ris_weblizar_image('<?php //echo $UniqueString; ?>')" />-->
 				</div>
 			<div class="rpp-admin-inner-div1" >
 				<input type="text" id="rpgp_image_url[]" name="rpgp_image_url[]" class="rpg_label_text"  value="<?php echo $image[0]; ?>"  readonly="readonly" style="display:none;" />
@@ -203,7 +202,10 @@ function ajax_get_thumbnail_uris() {
 }
 add_action('wp_ajax_uris_get_thumbnail', 'ajax_get_thumbnail_uris' );
 
-function add_image_meta_box_save($PostID) {
+/**
+ * Saving images associated to a slider
+ */
+function rcsl_image_meta_box_save($PostID) {
 if(isset($PostID) && isset($_POST['rpgp_image_url'])) {
 		$TotalImages = count($_POST['rpgp_image_url']);
 		$ImagesArray = array();
@@ -232,10 +234,12 @@ if(isset($PostID) && isset($_POST['rpgp_image_url'])) {
 		}
 	}
 }
-add_action('save_post', 'add_image_meta_box_save', 9, 1);
+add_action('save_post', 'rcsl_image_meta_box_save', 9, 1);
 
-//save settings meta box values
-function ris_settings_meta_save($PostID) {
+/**
+ * Saving settings associated to a slider
+ */
+function rcsl_settings_meta_save($PostID) {
 	if(isset($PostID) && isset($_POST['wl_action']) == "wl-save-settings") {
 
 		$RCSL_Slide_Title				=	$_POST['wl-l3-slide-title'];
@@ -256,9 +260,8 @@ function ris_settings_meta_save($PostID) {
 			'RCSL_Slider_Height'  			=> $RCSL_Slider_Height,
 		) );
 		
-		$RCSL_Gallery_Settings = "RCSL_Settings_".$PostID;
+		$RCSL_Gallery_Settings = RCSL_SETTINGS_KEY.$PostID;
 		update_post_meta($PostID, $RCSL_Gallery_Settings, $RCSL_Settings_Array);
 	}
 }
-add_action('save_post', 'ris_settings_meta_save', 9, 1);
-
+add_action('save_post', 'rcsl_settings_meta_save', 9, 1);

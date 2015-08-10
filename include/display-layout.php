@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Load All WRIS Custom Post Type
+ * Load All RCSL Custom Post Type
  */
 $IG_CPT_Name = "ris_gallery";
 $AllSlides = array(  'p' => $Id['id'], 'post_type' => RCSL_SLUG, 'orderby' => 'ASC');

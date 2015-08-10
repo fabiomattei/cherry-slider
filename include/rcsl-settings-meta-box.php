@@ -31,7 +31,7 @@ if($RCSL_Slider_Settings['RCSL_Slider_Width'] && $RCSL_Slider_Settings['RCSL_Sli
 <table class="form-table">
 	<tbody>
 		<tr id="L3">
-			<th scope="row" colspan="2"><h2>Configure Settings For Slider Shortcode: <?php echo "[URIS id=$PostId]"; ?></h2><hr></th>
+			<th scope="row" colspan="2"><h2>Configure Settings For Slider Shortcode: <?php echo "[RCSL id=$PostId]"; ?></h2><hr></th>
 		</tr>
 		
 		<tr id="L3">

@@ -1,10 +1,9 @@
 <?php
 
 /**
- * this function handle the short code
+ * This function handle the short code
  */
 function RCSLShortCode( $Id ) {
-
     ob_start();
 
 	/**
@@ -12,19 +11,18 @@ function RCSLShortCode( $Id ) {
      */
     if(!isset($Id['id'])) {
         $Id['id'] = "";
-		
     } else {
-		$WRIS_Id = $Id['id'];
-		$WRIS_Gallery_Settings_Key = "WRIS_Gallery_Settings_".$WRIS_Id;
-		$WRIS_Gallery_Settings = unserialize(get_post_meta( $WRIS_Id, $WRIS_Gallery_Settings_Key, true));
-		if($WRIS_Gallery_Settings['WRIS_L3_Slider_Width'] && $WRIS_Gallery_Settings['WRIS_L3_Slider_Height']) {
-			$WRIS_L3_Slide_Title   		    = $WRIS_Gallery_Settings['WRIS_L3_Slide_Title'];
-			$WRIS_L3_Auto_Slideshow   		= $WRIS_Gallery_Settings['WRIS_L3_Auto_Slideshow'];
-			$WRIS_L3_Sliding_Arrow   		= $WRIS_Gallery_Settings['WRIS_L3_Sliding_Arrow'];
-			$WRIS_L3_Slider_Navigation   	= $WRIS_Gallery_Settings['WRIS_L3_Slider_Navigation'];
-			$WRIS_L3_Navigation_Button   	= $WRIS_Gallery_Settings['WRIS_L3_Navigation_Button'];
-			$WRIS_L3_Slider_Width   		= $WRIS_Gallery_Settings['WRIS_L3_Slider_Width'];
-			$WRIS_L3_Slider_Height   		= $WRIS_Gallery_Settings['WRIS_L3_Slider_Height'];
+		$RCSL_Id = $Id['id'];
+		$RCSL_Gallery_Settings_Key = "RCSL_Gallery_Settings_".$RCSL_Id;
+		$RCSL_Gallery_Settings = unserialize(get_post_meta( $RCSL_Id, $RCSL_Gallery_Settings_Key, true));
+		if($RCSL_Gallery_Settings['RCSL_Slider_Width'] && $RCSL_Gallery_Settings['RCSL_Slider_Height']) {
+			$RCSL_Slide_Title   		    = $RCSL_Gallery_Settings['RCSL_Slide_Title'];
+			$RCSL_Auto_Slideshow   		= $RCSL_Gallery_Settings['RCSL_Auto_Slideshow'];
+			$RCSL_Sliding_Arrow   		= $RCSL_Gallery_Settings['RCSL_Sliding_Arrow'];
+			$RCSL_Slider_Navigation   	= $RCSL_Gallery_Settings['RCSL_Slider_Navigation'];
+			$RCSL_Navigation_Button   	= $RCSL_Gallery_Settings['RCSL_Navigation_Button'];
+			$RCSL_Slider_Width   		= $RCSL_Gallery_Settings['RCSL_Slider_Width'];
+			$RCSL_Slider_Height   		= $RCSL_Gallery_Settings['RCSL_Slider_Height'];
 		}
 	}
 

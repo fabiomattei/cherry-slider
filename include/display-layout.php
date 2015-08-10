@@ -21,11 +21,11 @@ $j = 1;
 <script type="text/javascript">
 	jQuery( document ).ready(function( jQuery ) {
 		jQuery( '#example3_<?php echo $post_id; ?>' ).sliderPro({
-			width: <?php if($WRIS_L3_Slider_Width != "") echo $WRIS_L3_Slider_Width; else echo "1000"; ?>,
-			height: <?php if($WRIS_L3_Slider_Height != "") echo $WRIS_L3_Slider_Height; else echo "500"; ?>,
-			autoplay: <?php if($WRIS_L3_Auto_Slideshow == 1) echo "true"; else echo "false"; ?>,
-			arrows: <?php if($WRIS_L3_Sliding_Arrow == 1) echo "true"; else echo "false"; ?>,
-			buttons: <?php if($WRIS_L3_Navigation_Button == 1) echo "true"; else echo "false"; ?>,
+			width: <?php if($RCSL_Slider_Width != "") echo $RCSL_Slider_Width; else echo "1000"; ?>,
+			height: <?php if($RCSL_Slider_Height != "") echo $RCSL_Slider_Height; else echo "500"; ?>,
+			autoplay: <?php if($RCSL_Auto_Slideshow == 1) echo "true"; else echo "false"; ?>,
+			arrows: <?php if($RCSL_Sliding_Arrow == 1) echo "true"; else echo "false"; ?>,
+			buttons: <?php if($RCSL_Navigation_Button == 1) echo "true"; else echo "false"; ?>,
 			smallSize: 500,
 			mediumSize: 1000,
 			largeSize: 3000,
@@ -100,7 +100,7 @@ $j = 1;
 	}
 }
 </style>
-<?php  if($WRIS_L3_Slide_Title == 1) { ?>
+<?php  if($RCSL_Slide_Title == 1) { ?>
 <h3 class="uris-slider-title"><?php echo get_the_title( $post_id ); ?> </h3>
 <?php } ?>
 <div id="example3_<?php echo $post_id; ?>" class="slider-pro">
@@ -144,7 +144,7 @@ $j = 1;
 	
 	<!-- slides div end -->
 	<?php 
-	if($WRIS_L3_Slider_Navigation == 1) {
+	if($RCSL_Slider_Navigation == 1) {
 	?>
 	<!-- slides thumbnails div start -->
 	<div class="sp-thumbnails">

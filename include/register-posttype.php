@@ -105,16 +105,16 @@ function rcsl_generate_add_image_meta_box_function( $post ) {?>
             <ul id="rpg_gallery_thumbs" class="clearfix">
 				<?php
 				/* load saved photos into ris */
-				$WRIS_AllPhotosDetails = unserialize(base64_decode(get_post_meta( $post->ID, 'rcsl_all_photos_details', true)));
+				$RCSL_AllPhotosDetails = unserialize(base64_decode(get_post_meta( $post->ID, 'rcsl_all_photos_details', true)));
 				$TotalImages =  get_post_meta( $post->ID, 'ris_total_images_count', true );
 				if($TotalImages) {
-					foreach($WRIS_AllPhotosDetails as $WRIS_SinglePhotoDetails) {
-						$name = $WRIS_SinglePhotoDetails['rpgp_image_label'];
-						$desc = $WRIS_SinglePhotoDetails['rpgp_image_desc'];						
+					foreach($RCSL_AllPhotosDetails as $RCSL_SinglePhotoDetails) {
+						$name = $RCSL_SinglePhotoDetails['rpgp_image_label'];
+						$desc = $RCSL_SinglePhotoDetails['rpgp_image_desc'];						
 						$UniqueString = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
-						$url = $WRIS_SinglePhotoDetails['rpgp_image_url'];
-						$url1 = $WRIS_SinglePhotoDetails['rpggallery_admin_thumb'];
-						$url3 = $WRIS_SinglePhotoDetails['rpggallery_admin_large'];
+						$url = $RCSL_SinglePhotoDetails['rpgp_image_url'];
+						$url1 = $RCSL_SinglePhotoDetails['rpggallery_admin_thumb'];
+						$url3 = $RCSL_SinglePhotoDetails['rpggallery_admin_large'];
 						?>
 						
 						<li class="rcsl-image-entry" id="rpg_img">
@@ -164,7 +164,7 @@ function rcsl_settings_meta_box_function( $post ) {
 
 function rcsl_shotcode_meta_box_function() { ?>
 	<p><?php _e("Use below shortcode in any Page/Post to publish your slider", RCSL_TEXT_DOMAIN);?></p>
-	<input readonly="readonly" type="text" value="<?php echo "[URIS id=".get_the_ID()."]"; ?>">
+	<input readonly="readonly" type="text" value="<?php echo "[RCSL id=".get_the_ID()."]"; ?>">
 	<?php 
 }
 

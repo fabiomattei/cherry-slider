@@ -15,7 +15,7 @@
 					?>
 					
 					<li class="rcsl-image-entry" id="rpg_img">
-						<a class="gallery_remove rpggallery_remove" href="#gallery_remove" id="rpg_remove_bt" ><img src="<?php echo RCSL_PLUGIN_URL.'img/close-icon.png'; ?>" /></a>
+						<a class="gallery_remove rpggallery_remove" href="#gallery_remove" id="rpg_remove_bt" ><img src="<?php echo RCSL_PLUGIN_URL.'images/close-icon.png'; ?>" /></a>
 						<div class="rpp-admin-inner-div1" >
 							<img src="<?php echo $url1; ?>" class="rpg-meta-image" alt=""  style="">
 							<input type="hidden" id="unique_string[]" name="unique_string[]" value="<?php echo $UniqueString; ?>" />

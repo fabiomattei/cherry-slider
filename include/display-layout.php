@@ -14,8 +14,8 @@ $post_id = get_the_ID();
 /**
  * Get All Slides Details Post Meta
  */
-$RPGP_AllPhotosDetails = unserialize(base64_decode(get_post_meta( get_the_ID(), 'ris_all_photos_details', true)));
-$TotalImages =  get_post_meta( get_the_ID(), 'ris_total_images_count', true );
+$RPGP_AllPhotosDetails = unserialize(base64_decode(get_post_meta( get_the_ID(), 'rcsl_all_photos_details', true)));
+$TotalImages =  get_post_meta( get_the_ID(), 'rcsl_total_images_count', true );
 $i = 1;
 $j = 1;
 ?>
@@ -105,7 +105,7 @@ $j = 1;
 <h3 class="uris-slider-title"><?php echo get_the_title( $post_id ); ?> </h3>
 <?php } ?>
 <div id="example3_<?php echo $post_id; ?>" class="slider-pro">
-	<!---- slides div start ---->
+	<!-- slides div start -->
 	<div class="sp-slides">
 		<?php 
 		foreach($RPGP_AllPhotosDetails as $RPGP_SinglePhotoDetails) {

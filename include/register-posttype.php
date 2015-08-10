@@ -225,10 +225,10 @@ if(isset($PostID) && isset($_POST['rpgp_image_url'])) {
 				);
 			}
 			update_post_meta($PostID, 'rcsl_all_photos_details', base64_encode(serialize($ImagesArray)));
-			update_post_meta($PostID, 'ris_total_images_count', $TotalImages);
+			update_post_meta($PostID, 'rcsl_total_images_count', $TotalImages);
 		} else {
 			$TotalImages = 0;
-			update_post_meta($PostID, 'ris_total_images_count', $TotalImages);
+			update_post_meta($PostID, 'rcsl_total_images_count', $TotalImages);
 			$ImagesArray = array();
 			update_post_meta($PostID, 'rcsl_all_photos_details', base64_encode(serialize($ImagesArray)));
 		}

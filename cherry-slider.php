@@ -16,7 +16,7 @@ License: GPLv2
 define( 'RCSL_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'RCSL_PLUGIN_URL' , plugin_dir_url( __FILE__ ) );
 define( 'RCSL_TEXT_DOMAIN', 'cherry-slider' );
-define( 'RCSL_SLUG', 'cherry-slider' );
+define( 'RCSL_SLUG',        'cherry-slider' );
 
 define( 'RCSL_SETTINGS_KEY', 'RCSL_Gallery_Settings_');
 

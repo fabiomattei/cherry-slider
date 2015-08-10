@@ -13,12 +13,12 @@ function RCSLCherrySliderShortCodeDetect() {
 			/**
              * js scripts
              */
-			wp_enqueue_script('rcsl-slippry-javascript', RCSL_PLUGIN_URL.'js/slippry.min.js', array('jquery'), '', true);
+			wp_enqueue_script('rcsl-jquery-sliderPro-js', RCSL_PLUGIN_URL.'js/jquery.sliderPro.js', array('jquery'), '', true);
 			
 			/**   
              * css scripts
              */
-			wp_enqueue_style('rcsl-slippry-css', RCSL_PLUGIN_URL.'css/slippry.css');
+			wp_enqueue_style('rcsl-slider-css', RCSL_PLUGIN_URL.'css/slider-pro.css');
 			
             break;
         } //end of if

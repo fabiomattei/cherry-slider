@@ -46,5 +46,6 @@ if ( is_admin() ) {
 } else {
 	// include for client side
 	include( 'include/display-functions.php');
+	include( 'include/display-shortcode.php');
 	
 }

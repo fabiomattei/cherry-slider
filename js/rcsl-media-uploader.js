@@ -1,14 +1,19 @@
 jQuery(function(jQuery) {
     
     var file_frame,
-            rpggallery = {
+        rpggallery = {
+			
         admin_thumb_ul: '',
+			
         init: function() {
+			
             this.admin_thumb_ul = jQuery('#rpg_gallery_thumbs');
+			
             this.admin_thumb_ul.sortable({
                 placeholder: '',
 				revert: true,
             });
+			
             this.admin_thumb_ul.on('click', '.rpggallery_remove', function() {
                 if (confirm('Are you sure you want to delete this?')) {
                     jQuery(this).parent().fadeOut(1000, function() {
@@ -20,6 +25,7 @@ jQuery(function(jQuery) {
             
             jQuery('#rpg_gallery_upload_button').on('click', function(event) {
                 event.preventDefault();
+				
                 if (file_frame) {
                     file_frame.open();
                     return;
@@ -30,7 +36,7 @@ jQuery(function(jQuery) {
                     button: {
                         text: jQuery(this).data('uploader_button_text'),
                     },
-                    multiple: true
+					multiple: true,
                 });
 
                 file_frame.on('select', function() {
@@ -42,9 +48,9 @@ jQuery(function(jQuery) {
                 });
                 file_frame.open();
             });
-
            
         },
+		
         get_thumbnail_uris: function(id, cb) {
             cb = cb || function() {
             };
@@ -57,6 +63,7 @@ jQuery(function(jQuery) {
                 cb();
             });
         },
+		
         get_all_thumbnails: function(post_id, included) {
             var data = {
                 action: 'rpggallery_get_all_thumbnail',
@@ -69,6 +76,8 @@ jQuery(function(jQuery) {
                 jQuery('#rpggallery_spinner').hide();
             });
         }
+		
     };
+	
     rpggallery.init();
 });

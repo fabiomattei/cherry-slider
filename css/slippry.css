@@ -234,7 +234,7 @@
         outline: none; }
       .sy-controls li a:after {
         content: "";
-        background-image: url("/images/arrows.svg");
+        background-image: url("../images/arrows.svg");
         background-repeat: no-repeat;
         -moz-background-size: cover;
         -o-background-size: cover;

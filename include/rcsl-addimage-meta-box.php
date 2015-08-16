@@ -1,3 +1,14 @@
+<?php
+/**
+ * Load Saved Ultimate Responsive Image Slider Pro Settings
+ */
+$PostId = $post->ID;
+$RCSL_Slider_Settings_for_message = unserialize( get_post_meta( $PostId, RCSL_SETTINGS_KEY.$PostId, true) );
+if($RCSL_Slider_Settings_for_message['RCSL_Slider_Width'] && $RCSL_Slider_Settings_for_message['RCSL_Slider_Height']) {
+	$RCSL_Slider_Width_for_message  = $RCSL_Slider_Settings_for_message['RCSL_Slider_Width'];
+	$RCSL_Slider_Height_for_message = $RCSL_Slider_Settings_for_message['RCSL_Slider_Height'];
+}
+?>
 	<div id="rpggallery_container">
         <ul id="rpg_gallery_thumbs" class="clearfix">
 			<?php
@@ -19,7 +30,6 @@
 						<div class="rpp-admin-inner-div1" >
 							<img src="<?php echo $url1; ?>" class="rpg-meta-image" alt=""  style="">
 							<input type="hidden" id="unique_string[]" name="unique_string[]" value="<?php echo $UniqueString; ?>" />
-							<!--<input type="button" id="upload-background-<?php //echo $UniqueString; ?>" name="upload-background-<?php //echo $UniqueString; ?>" value="Upload Image" class="button-primary " onClick="ris_weblizar_image('<?php //echo $UniqueString; ?>')" />-->
 						</div>
 						<div class="rpp-admin-inner-div2" >
 							<input type="text" id="rpgp_image_url[]" name="rpgp_image_url[]" class="rpg_label_text"  value="<?php echo $url; ?>"  readonly="readonly" style="display:none;" />
@@ -45,7 +55,7 @@
     </div>
 	
 	<!--Add New Image Button-->
-	<div class="rcsl-image-entry add_rpg_new_image" id="rpg_gallery_upload_button" data-uploader_title="Upload Image" data-uploader_button_text="Select" >
+	<div class="rcsl-image-entry add_rpg_new_image" id="rpg_gallery_upload_button" data-uploader_title="Upload Image (<?php echo $RCSL_Slider_Width_for_message; ?> x <?php echo $RCSL_Slider_Height_for_message; ?>)" data-uploader_button_text="Select ss" >
 		<div class="dashicons dashicons-plus"></div>
 		<p>
 			<?php _e('Add New Images', RCSL_TEXT_DOMAIN); ?>

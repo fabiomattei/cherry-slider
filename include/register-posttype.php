@@ -83,7 +83,6 @@ function rcsl_admin_enqueue_scripts() {
 }
 
 add_action('admin_enqueue_scripts', 'rcsl_admin_enqueue_scripts' );
-add_action('admin_enqueue_scripts', 'rcsl_admin_enqueue_scripts' );
 
 /**
  * Adding all metaboxes necessasry for the slider

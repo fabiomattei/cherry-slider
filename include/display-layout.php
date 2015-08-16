@@ -22,23 +22,19 @@ $j = 1;
 <script type="text/javascript">
 jQuery( document ).ready(function( jQuery ) {
 	jQuery('#out-of-the-box-demo').slippry({ 
-		adaptiveHeight: false, 
+		adaptiveHeight: true, 
 	});
 });
 </script>
 <style>
-.slidercont {
-    width:100%;
-    height:350px;
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
+.sy-slides-wrap {
+	max-height: 300px;
 }
 </style>
 <?php  if($RCSL_Slide_Title == 1) { ?>
 <h3 class="uris-slider-title"><?php echo get_the_title( $post_id ); ?></h3>
 <?php } ?>
-<div id="example3_<?php echo $post_id; ?>" class="slidercont">
+<div id="example3_<?php echo $post_id; ?>" class="slidecont">
 	<!-- start slippry -->
 	<ul id="out-of-the-box-demo">
 	<?php 
@@ -50,7 +46,7 @@ jQuery( document ).ready(function( jQuery ) {
 	?>
 	  <li>
 	    <a href="#slide<?php echo $i; ?>">
-	      <img src="<?php echo $Url; ?>">
+	      <img src="<?php echo $Url; ?>" class="imgclass">
 		<?php if($Title != "") { ?>
 		<p class="sp-layer sp-white sp-padding title-in title-in-bg hide-small-screen" 
 			data-position="centerCenter"

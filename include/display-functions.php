@@ -11,7 +11,7 @@ function RCSLCherrySliderShortCodeDetect() {
     foreach ($Posts as $Post) {
 		if ( strpos($Post->post_content, 'RCSL' ) ) {
 			/**
-             * js scripts
+       * js scripts
              */
 			wp_enqueue_script('rcsl-slippry-javascript', RCSL_PLUGIN_URL.'lib/slippry/slippry.min.js', array('jquery'), '', true);
 

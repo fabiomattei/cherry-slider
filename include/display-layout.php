@@ -28,7 +28,7 @@ jQuery( document ).ready(function( jQuery ) {
 </script>
 <style>
 .sy-slides-wrap {
-	max-height: 300px;
+	max-height: 520px;
 }
 </style>
 <?php  if($RCSL_Slide_Title == 1) { ?>

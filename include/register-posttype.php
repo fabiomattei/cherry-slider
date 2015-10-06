@@ -105,7 +105,8 @@ function rcsl_generate_add_image_meta_box_function( $post ) {?>
 				<?php
 				/* load saved photos into ris */
 				$RCSL_AllPhotosDetails = unserialize(base64_decode(get_post_meta( $post->ID, 'rcsl_all_photos_details', true)));
-				$TotalImages =  get_post_meta( $post->ID, 'ris_total_images_count', true );
+				$TotalImages =  get_post_meta( $post->ID, 'rcsl_total_images_count', true );
+				
 				if($TotalImages) {
 					foreach($RCSL_AllPhotosDetails as $RCSL_SinglePhotoDetails) {
 						$name = $RCSL_SinglePhotoDetails['rpgp_image_label'];

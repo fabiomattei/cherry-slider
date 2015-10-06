@@ -22,7 +22,7 @@ jQuery(document).ready( function(){
 	});
 });
 </script>
-<?php $PreviewImg = CHSL_PLUGIN_URL.'img/'; ?>
+<?php $PreviewImg = RCSL_PLUGIN_URL.'img/'; ?>
 
 <div style="display:none;" id="s1">
 	<h4>Sliding Arrow</h4>

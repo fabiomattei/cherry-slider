@@ -48,19 +48,13 @@ jQuery( document ).ready(function( jQuery ) {
 	    <a href="#slide<?php echo $i; ?>">
 	      <img src="<?php echo $Url; ?>" class="imgclass">
 		<?php if($Title != "") { ?>
-		<p class="sp-layer sp-white sp-padding title-in title-in-bg hide-small-screen" 
-			data-position="centerCenter"
-			data-vertical="-14%"
-			data-show-transition="left" data-show-delay="500">
+		<p class="slider-title">
 			<?php if(strlen($Title) > 100 ) echo substr($Title,0,100); else echo $Title; ?>
 		</p>
 		<?php } ?>
 
 		<?php if($Desc != "") { ?>
-		<p class="sp-layer sp-black sp-padding desc-in desc-in-bg hide-medium-screen" 
-			data-position="centerCenter"
-			data-vertical="14%"
-			data-show-transition="right" data-show-delay="500">
+		<p class="slider-description" >
 			<?php if(strlen($Desc) > 300 ) echo substr($Desc,0,300)."..."; else echo $Desc; ?>
 		</p>
 		<?php } ?>

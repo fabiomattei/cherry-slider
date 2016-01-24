@@ -2,9 +2,12 @@
 
 #### About Cherry Slider
 
-This is a wordpress plugin, it is in early development and is my attempet to create a free 
-plugin that allows the user to create a slider.
+This is a wordpress plugin. It gives the possibility of installing a slider in a wordpress website.
 
-There is still a lot of work to do so please do not try to use it now.
+It is based on [Slippry](http://slippry.com/ "Slippry") a wonderful jQuery library that allows to create
+sliders very easly and very quickly.
 
-Fabio
+Cherry Slider creates a new post-type: cherry-slider
+ 
+Each post that belong to this post-type will be a slide of the slider.
+His title will be the slider title and the post-type text will be the subtitle.

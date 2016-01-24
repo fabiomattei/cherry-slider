@@ -61,21 +61,4 @@ while ( $loop->have_posts() ) : $loop->the_post();
 <?php endwhile; ?>
     </ul>
     <!-- end slippry -->
-
-    <?php
-    if($RCSL_Slider_Navigation == 1) {
-        ?>
-        <!-- slides thumbnails div start -->
-        <div class="sp-thumbnails">
-            <?php
-            foreach($RPGP_AllPhotosDetails as $RPGP_SinglePhotoDetails) {
-                $ThumbUrl = $RPGP_SinglePhotoDetails['rpggallery_admin_thumb'];
-                $j++;
-                ?>
-                <img class="sp-thumbnail" src="<?php echo $ThumbUrl; ?>"/>
-            <?php } ?>
-        </div>
-    <?php } ?>
-    <!-- slides thumbnails div end -->
-
 </div>

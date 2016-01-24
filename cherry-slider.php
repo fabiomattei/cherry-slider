@@ -49,5 +49,4 @@ if ( is_admin() ) {
 	// include for client side
 	include( 'include/display-functions.php');
 	include( 'include/display-shortcode.php');
-	
 }

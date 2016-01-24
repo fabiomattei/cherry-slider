@@ -2,23 +2,23 @@
 
 /**
  * This functions check the loaded post, in case a shortcode is present id loads
- * necessary css and js in order to show the gallery
+ * necessary css and js in order to show the slider properly
  *
  * It relies on a jquery dependency
  */
 function RCSLCherrySliderShortCodeDetect() {
     global $wp_query;
     $Posts = $wp_query->posts;
-    $Pattern = get_shortcode_regex();
     foreach ($Posts as $Post) {
 		if ( strpos($Post->post_content, 'RCSL' ) ) {
 			// loading js scripts
-			wp_enqueue_script('rcsl-slippry-javascript', RCSL_PLUGIN_URL.'lib/slippry/slippry.min.js', array('jquery'), '', true);
+			wp_enqueue_script('rcsl-slippry-javascript', RCSL_PLUGIN_URL.'js/red-cherries-slider.js', array(), '', true);
 			// loading css scripts
-			wp_enqueue_style('rcsl-slippry-css', RCSL_PLUGIN_URL.'lib/slippry/slippry.css');
+			wp_enqueue_style('rcsl-slippry-css', RCSL_PLUGIN_URL.'css/red-cherries-slider.css');
 
             break;
         } //end of if
     } //end of foreach
 }
+
 add_action( 'wp', 'RCSLCherrySliderShortCodeDetect' );

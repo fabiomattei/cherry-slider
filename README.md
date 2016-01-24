@@ -5,7 +5,7 @@
 This is a wordpress plugin. It gives the possibility of installing a slider in a wordpress website.
 
 It is based on [Slippry](http://slippry.com/ "Slippry") a wonderful jQuery library that allows to create
-sliders very easly and very quickly.
+sliders very easily and very quickly.
 
 Cherry Slider creates a new post-type: cherry-slider
  

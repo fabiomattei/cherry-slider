@@ -22,7 +22,7 @@ function RCSLShortCode( $Id ) {
         while ($posts->have_posts()) {
             $posts->the_post();
 
-            $out .= get_the_post_thumbnail( $post_id, 'rc_gallery_image', array( 'class' => '' ) );
+            $out .= get_the_post_thumbnail( null, 'rc_gallery_image', array( 'class' => '' ) );
 
         } // end while loop
 

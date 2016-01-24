@@ -33,8 +33,15 @@ $rcsl_plugin_name = 'Cherry slider';
 /*******************************************
 * Images dimentions
 ********************************************/
-add_image_size( 'rpggallery_admin_thumb', 300, 300, true ); 
-add_image_size( 'rpggallery_admin_large', 500, 9999 ); 
+add_image_size( 'rc_gallery_image', 1000, 300, true );
+the_post_thumbnail( 'rc_gallery_image' );
+
+add_filter( 'image_size_names_choose', 'rc_gallery_image_size' );
+function rc_gallery_image_size( $sizes ) {
+	return array_merge( $sizes, array(
+		'rc_gallery_image' => __( 'Red Cherry Slider Img' ),
+	) );
+}
 
 /*******************************************
 * Includes

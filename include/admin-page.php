@@ -34,7 +34,7 @@ function rc_cs_init() {
     // activating settings
     register_setting(
         'rccsoptiongroup',                                // option group
-        'rc_cs_options',                                  // option name
+        'rc_cs_options',                                  // option name, determine the name of the setting stored in the database
         'rc_cs_cherry_slider_validate_options'            // callback function for validation
     );
 
@@ -52,6 +52,23 @@ function rc_cs_init() {
         'rc-cs-cherry-slider',                           // page id
         'rc_cs_cherry_slider_section'                    // section id
     );
+
+    add_settings_field(
+        'rc_cs_cherry_slider_transition',                // id
+        __('Transition', 'cherryslidersettings'),        // lable to show in the form associated to the field
+        'rc_cs_cherry_slider_transition_callback',       // callback function
+        'rc-cs-cherry-slider',                           // page id
+        'rc_cs_cherry_slider_section'                    // section id
+    );
+
+    add_settings_field(
+        'rc_cs_cherry_slider_easing',                    // id
+        __('Easing', 'cherryslidersettings'),            // lable to show in the form associated to the field
+        'rc_cs_cherry_slider_easing_callback',           // callback function
+        'rc-cs-cherry-slider',                           // page id
+        'rc_cs_cherry_slider_section'                    // section id
+    );
+    
 }
 
 add_action('admin_init', 'rc_cs_init');
@@ -64,15 +81,42 @@ function rc_cs_cherry_slider_section_callback() {
 // Display and fill the form field
 function rc_cs_cherry_slider_setting_input_callback() {
     //get option 'text_string' value from the database
-    $options = get_option(RCSL_OPTIONS_STRING);
+    $options = get_option( RCSL_OPTIONS_STRING );
     $speed = $options['speed'];
     // echo the field
     echo "<input id='speed' name='rc_cs_options[speed]' type='text' value='{$speed}' />";
+}
+
+function rc_cs_cherry_slider_transition_callback() {
+    $options = get_option( RCSL_OPTIONS_STRING );
+    if( !isset( $options['transition'] ) ) $options['transition'] = 'fade';
+    ?>
+    <select name="rc_cs_options[transition]">
+        <option value="fade" <?php selected( $options['transition'], 'fade' ); ?>>fade</option>
+        <option value="horizontal" <?php selected( $options['transition'], 'horizontal' ); ?>>horizontal</option>
+        <option value="vertical" <?php selected( $options['transition'], 'vertical' ); ?>>vertical</option>
+        <option value="kenburns" <?php selected( $options['transition'], 'kenburns' ); ?>>kenburns</option>
+    </select>
+    <?php
+}
+
+function rc_cs_cherry_slider_easing_callback() {
+    $options = get_option( RCSL_OPTIONS_STRING );
+    if( !isset( $options['easing'] ) ) $options['easing'] = 'swing';
+    ?>
+    <select name="rc_cs_options[easing]">
+        <option value="swing" <?php selected( $options['easing'], 'swing' ); ?>>swing</option>
+        <option value="linear" <?php selected( $options['easing'], 'linear' ); ?>>linear</option>
+        <option value="easeInQuad" <?php selected( $options['easing'], 'easeInQuad' ); ?>>easeInQuad</option>
+    </select>
+    <?php
 }
 
 // Validate input
 function rc_cs_cherry_slider_validate_options( $input ) {
     $valid = array();
     $valid['speed'] = preg_replace( '/[^0-9]/', '', $input['speed'] );
+    $valid['transition'] = preg_replace( '/[^a-zA-Z]/', '', $input['transition'] );
+    $valid['easing'] = preg_replace( '/[^a-zA-Z]/', '', $input['easing'] );
     return $valid;
 }

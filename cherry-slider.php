@@ -15,10 +15,12 @@ License: GPLv2
 ********************************************/
 define( 'RCSL_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'RCSL_PLUGIN_URL' , plugin_dir_url( __FILE__ ) );
+define( 'RCSL_OPTIONS_STRING' , 'rc_cs_options' );
+define( 'RCSL_ADMIN_OPTIONS_STRING' , 'rc_cs_admin_options' );
 define( 'RCSL_TEXT_DOMAIN', 'cherry-slider' );
 define( 'RCSL_SLUG',        'cherry-slider' );
 
-define( 'RCSL_SETTINGS_KEY', 'RCSL_Gallery_Settings_');
+define( 'RCSL_SETTINGS_KEY', 'RCSL_Gallery_Settings');
 
 /*******************************************
 * Global Variables
@@ -29,6 +31,22 @@ $rcsl_plugin_name = 'Cherry slider';
 
 // retrievie our plugin settings from option table
 // $mfp_options = get_option( 'mfp_settings' );
+
+function rc_cs_create_options() {
+	// front-end options: autoloaded
+	add_option( RCSL_OPTIONS_STRING, array(
+		'color' => 'red',
+		'fontsize' => '120%',
+		'border' => '2px solid red'
+	));
+	// back-end options: loaded only if explicitly needed
+	add_option( RCSL_ADMIN_OPTIONS_STRING, array(
+		'version' => '1.0',
+		'donate_url' => 'http://x.y/z/',
+		'advanced_options' => '1'
+	), '', 'no' );
+}
+
 
 /*******************************************
 * Images dimentions
@@ -49,6 +67,7 @@ function rc_gallery_image_size( $sizes ) {
 
 if ( is_admin() ) {
 	// include admin side
+    include( 'include/activation.php' );
 	include( 'include/installer.php' );
 	include( 'include/register-posttype.php' );
 

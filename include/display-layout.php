@@ -37,26 +37,26 @@ while ( $loop->have_posts() ) : $loop->the_post();
     //get the post id
     $post_id = get_the_ID();
 
-                $Title = get_the_title();
-                $Desc = get_the_content();
-                $i++;
-                ?>
-                <li>
-                    <a href="#slide<?php echo $i; ?>">
-                        <?php echo get_the_post_thumbnail( $post_id, 'rc_gallery_image', array( 'class' => 'imgclass', 'title' => '' ) ) ?>
-                        <?php if($Title != "") { ?>
-                            <p class="slider-title">
-                                <?php if(strlen($Title) > 100 ) echo substr($Title,0,100); else echo $Title; ?>
-                            </p>
-                        <?php } ?>
+    $Title = get_the_title();
+    $Desc = get_the_content();
+    $i++;
+    ?>
+    <li>
+        <a href="#slide<?php echo $i; ?>">
+            <?php echo get_the_post_thumbnail( $post_id, 'rc_gallery_image', array( 'class' => 'imgclass', 'title' => '' ) ) ?>
+            <?php if($Title != "") { ?>
+                <p class="slider-title">
+                    <?php if(strlen($Title) > 100 ) echo substr($Title,0,100); else echo $Title; ?>
+                </p>
+            <?php } ?>
 
-                        <?php if($Desc != "") { ?>
-                            <p class="slider-description" >
-                                <?php if(strlen($Desc) > 300 ) echo substr($Desc,0,300)."..."; else echo $Desc; ?>
-                            </p>
-                        <?php } ?>
-                    </a>
-                </li>
+            <?php if($Desc != "") { ?>
+                <p class="slider-description" >
+                    <?php if(strlen($Desc) > 300 ) echo substr($Desc,0,300)."..."; else echo $Desc; ?>
+                </p>
+            <?php } ?>
+        </a>
+    </li>
 
 <?php endwhile; ?>
     </ul>

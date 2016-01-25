@@ -35,9 +35,9 @@ $rcsl_plugin_name = 'Cherry slider';
 function rc_cs_create_options() {
 	// front-end options: autoloaded
 	add_option( RCSL_OPTIONS_STRING, array(
-		'color' => 'red',
-		'fontsize' => '120%',
-		'border' => '2px solid red'
+        'speed' => '800',
+        'transition' => 'fade',
+        'easing' => 'swing'
 	));
 	// back-end options: loaded only if explicitly needed
 	add_option( RCSL_ADMIN_OPTIONS_STRING, array(
@@ -70,6 +70,7 @@ if ( is_admin() ) {
     include( 'include/activation.php' );
 	include( 'include/installer.php' );
 	include( 'include/register-posttype.php' );
+    include( 'include/admin-page.php' );
 
 } else {
 	// include for client side

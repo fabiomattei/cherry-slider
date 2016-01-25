@@ -68,7 +68,7 @@ function rc_cs_init() {
         'rc-cs-cherry-slider',                           // page id
         'rc_cs_cherry_slider_section'                    // section id
     );
-    
+
 }
 
 add_action('admin_init', 'rc_cs_init');

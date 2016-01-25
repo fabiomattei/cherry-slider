@@ -10,12 +10,20 @@ $atts = array( // a few default values
 );
 $loop = new WP_Query( $atts );
 
+$options = get_option( RCSL_OPTIONS_STRING );
+if( !isset( $options['speed'] ) ) $options['speed'] = '800';
+if( !isset( $options['transition'] ) ) $options['transition'] = 'fade';
+if( !isset( $options['easing'] ) ) $options['easing'] = 'swing';
+
 ?>
 
 <script type="text/javascript">
     jQuery( document ).ready(function( jQuery ) {
         jQuery('#out-of-the-box-demo').slippry({
             adaptiveHeight: true,
+            speed: <?php echo $options['speed']; ?>,
+            transition: '<?php echo $options['transition']; ?>',
+            easing: '<?php echo $options['easing']; ?>',
         });
     });
 </script>

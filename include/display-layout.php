@@ -37,7 +37,7 @@ if( !isset( $options['height'] ) ) $options['height'] = 300;
 <?php  if($RCSL_Slide_Title == 1) { ?>
     <h3 class="uris-slider-title"><?php echo get_the_title( $post_id ); ?></h3>
 <?php } ?>
-<div id="example3_<?php echo $post_id; ?>" class="slidecont">
+<div id="example_<?php echo $post_id; ?>" class="slidecont">
     <!-- start slippry -->
     <ul id="out-of-the-box-demo">
 
@@ -53,7 +53,7 @@ while ( $loop->have_posts() ) : $loop->the_post();
     ?>
     <li>
         <a href="#slide<?php echo $i; ?>">
-            <?php echo get_the_post_thumbnail( $post_id, 'rc_gallery_image', array( 'class' => 'imgclass', 'title' => '' ) ) ?>
+            <?php echo get_the_post_thumbnail( $post_id, array( $options['width'], $options['height'] ), array( 'class' => 'imgclass', 'title' => '' ) ) ?>
             <?php if($Title != "") { ?>
                 <p class="slider-title">
                     <?php if(strlen($Title) > 100 ) echo substr($Title,0,100); else echo $Title; ?>

@@ -65,7 +65,7 @@ the_post_thumbnail( 'rc_gallery_image' );
 add_filter( 'image_size_names_choose', 'rc_gallery_image_size' );
 function rc_gallery_image_size( $sizes ) {
 	return array_merge( $sizes, array(
-		'rc_gallery_image' => __( 'Red Cherry Slider Img' ),
+		'rc_gallery_image' => __( 'Red Cherry Slider Img', 'chslider' ),
 	) );
 }
 

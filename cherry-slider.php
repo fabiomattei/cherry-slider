@@ -7,6 +7,7 @@ Version: 1.0.0
 Author: Red Cherries
 Author URI: http://www.redcherries.net/
 License: GPLv2
+Text Domain: chslider
 Description: Cherry Slider gives the possibility of installing a slider in a wordpress website.
 
 It is based on [Slippry](http://slippry.com/ "Slippry") a wonderful jQuery library that allows to create
@@ -39,24 +40,16 @@ define( 'RCSL_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'RCSL_PLUGIN_URL' , plugin_dir_url( __FILE__ ) );
 define( 'RCSL_OPTIONS_STRING' , 'rc_cs_options' );
 define( 'RCSL_ADMIN_OPTIONS_STRING' , 'rc_cs_admin_options' );
-define( 'RCSL_TEXT_DOMAIN', 'cherry-slider' );
-define( 'RCSL_SLUG',        'cherry-slider' );
+define( 'RCSL_SLUG',        'cherryslider' );  // it defines the post-type name
 
 define( 'RCSL_SETTINGS_KEY', 'RCSL_Gallery_Settings');
 
 /*******************************************
-* Global Variables
-* variabili e costanti che sono usate per tutto il plug in
+* Global Variables and options
 ********************************************/
 
 $rcsl_plugin_name = 'Cherry slider';
 
-// retrievie our plugin settings from option table
-// $mfp_options = get_option( 'mfp_settings' );
-
-/*******************************************
-* Loading options
-********************************************/
 $options = get_option( RCSL_OPTIONS_STRING );
 if( !isset( $options['width'] ) ) $options['width'] = 1000;
 if( !isset( $options['height'] ) ) $options['height'] = 300;

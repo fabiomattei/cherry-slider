@@ -1,19 +1,19 @@
 <?php
 	
 $labels = array(
-	'name' => _x( 'Cherry Slider', RCSL_TEXT_DOMAIN ),
-	'singular_name' => _x( 'Cherry Slider', RCSL_TEXT_DOMAIN ),
-	'add_new' => _x( 'Add New Slide', RCSL_TEXT_DOMAIN ),
-	'add_new_item' => _x( 'Add New Slide', RCSL_TEXT_DOMAIN ),
-	'edit_item' => _x( 'Edit Slide', RCSL_TEXT_DOMAIN ),
-	'new_item' => _x( 'New Slide', RCSL_TEXT_DOMAIN ),
-	'view_item' => _x( 'View Slide', RCSL_TEXT_DOMAIN ),
-	'search_items' => _x( 'Search Slide', RCSL_TEXT_DOMAIN ),
-	'not_found' => _x( 'No Slide found', RCSL_TEXT_DOMAIN ),
-	'not_found_in_trash' => _x( 'No Slide found in Trash', RCSL_TEXT_DOMAIN ),
-	'parent_item_colon' => _x( 'Parent Slide:', RCSL_TEXT_DOMAIN ),
-	'all_items' => __( 'All Slides', RCSL_TEXT_DOMAIN ),
-	'menu_name' => _x( 'Cherry Slider', RCSL_TEXT_DOMAIN ),
+	'name' => _x( 'Cherry Slider', 'chslider' ),
+	'singular_name' => _x( 'Cherry Slider', 'chslider' ),
+	'add_new' => _x( 'Add New Slide', 'chslider' ),
+	'add_new_item' => _x( 'Add New Slide', 'chslider' ),
+	'edit_item' => _x( 'Edit Slide', 'chslider' ),
+	'new_item' => _x( 'New Slide', 'chslider' ),
+	'view_item' => _x( 'View Slide', 'chslider' ),
+	'search_items' => _x( 'Search Slide', 'chslider' ),
+	'not_found' => _x( 'No Slide found', 'chslider' ),
+	'not_found_in_trash' => _x( 'No Slide found in Trash', 'chslider' ),
+	'parent_item_colon' => _x( 'Parent Slide:', 'chslider' ),
+	'all_items' => __( 'All Slides', 'chslider' ),
+	'menu_name' => _x( 'Cherry Slider', 'chslider' ),
 );
 
 $args = array(
@@ -35,4 +35,4 @@ $args = array(
 	'capability_type' => 'post'
 );
 
-register_post_type( RCSL_TEXT_DOMAIN, $args );
+register_post_type( RCSL_SLUG, $args );

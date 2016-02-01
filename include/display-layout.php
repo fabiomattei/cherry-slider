@@ -14,6 +14,8 @@ $options = get_option( RCSL_OPTIONS_STRING );
 if( !isset( $options['speed'] ) ) $options['speed'] = '800';
 if( !isset( $options['transition'] ) ) $options['transition'] = 'fade';
 if( !isset( $options['easing'] ) ) $options['easing'] = 'swing';
+if( !isset( $options['width'] ) ) $options['width'] = 1000;
+if( !isset( $options['height'] ) ) $options['height'] = 300;
 
 ?>
 
@@ -29,7 +31,7 @@ if( !isset( $options['easing'] ) ) $options['easing'] = 'swing';
 </script>
 <style>
     .sy-slides-wrap {
-        max-height: 520px;
+        max-height: <?php echo $options['height']; ?>px;
     }
 </style>
 <?php  if($RCSL_Slide_Title == 1) { ?>

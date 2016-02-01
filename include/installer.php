@@ -11,8 +11,8 @@ function rcsl_items_create_settings() {
 		"RCSL_Sliding_Arrow"   		=> 1,
 		"RCSL_Slider_Navigation"   	=> 1,
 		"RCSL_Navigation_Button"   	=> 1,
-		"RCSL_Slider_Width"   		=> "1000",
-		"RCSL_Slider_Height"   		=> "500"
+		"RCSL_Slider_Width"   		=> 1000,
+		"RCSL_Slider_Height"   		=> 500
     ));
     add_option("RCSL_Settings", $DefaultSettingsArray);
 	

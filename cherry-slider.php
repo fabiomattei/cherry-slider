@@ -55,9 +55,18 @@ $rcsl_plugin_name = 'Cherry slider';
 // $mfp_options = get_option( 'mfp_settings' );
 
 /*******************************************
-* Images dimentions
+* Loading options
 ********************************************/
-add_image_size( 'rc_gallery_image', 1000, 300, true );
+$options = get_option( RCSL_OPTIONS_STRING );
+if( !isset( $options['width'] ) ) $options['width'] = 1000;
+if( !isset( $options['height'] ) ) $options['height'] = 300;
+
+/*******************************************
+* Images dimentions
+* They depends from the options defined by the user.
+* They sets a new "image_size"
+********************************************/
+add_image_size( 'rc_gallery_image', $options['width'], $options['height'], true );
 the_post_thumbnail( 'rc_gallery_image' );
 
 add_filter( 'image_size_names_choose', 'rc_gallery_image_size' );
@@ -100,14 +109,16 @@ function rc_cs_activate() {
     // adding default options
     // front-end options: autoloaded
     add_option( RCSL_OPTIONS_STRING, array(
-        'speed' => '800',
+        'speed'      => '800',
         'transition' => 'fade',
-        'easing' => 'swing'
+        'easing'     => 'swing',
+		'width'      => 1000,
+		'heigt'      => 300,
     ));
     // back-end options: loaded only if explicitly needed
     add_option( RCSL_ADMIN_OPTIONS_STRING, array(
-        'version' => '1.0',
-        'donate_url' => 'http://x.y/z/',
+        'version'          => '1.0',
+        'donate_url'       => 'http://x.y/z/',
         'advanced_options' => '1'
     ), '', 'no' );
 

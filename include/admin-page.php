@@ -68,6 +68,22 @@ function rc_cs_init() {
         'rc-cs-cherry-slider',                           // page id
         'rc_cs_cherry_slider_section'                    // section id
     );
+	
+    add_settings_field(
+        'rc_cs_cherry_slider_width',                     // id
+        __('Width', 'cherryslidersettings'),            // lable to show in the form associated to the field
+        'rc_cs_cherry_slider_width_callback',           // callback function
+        'rc-cs-cherry-slider',                           // page id
+        'rc_cs_cherry_slider_section'                    // section id
+    );
+	
+    add_settings_field(
+        'rc_cs_cherry_slider_height',                    // id
+        __('Height', 'cherryslidersettings'),            // lable to show in the form associated to the field
+        'rc_cs_cherry_slider_height_callback',           // callback function
+        'rc-cs-cherry-slider',                           // page id
+        'rc_cs_cherry_slider_section'                    // section id
+    );
 
 }
 
@@ -112,11 +128,31 @@ function rc_cs_cherry_slider_easing_callback() {
     <?php
 }
 
+// Display and fill the form field
+function rc_cs_cherry_slider_width_callback() {
+    //get option 'text_string' value from the database
+    $options = get_option( RCSL_OPTIONS_STRING );
+    $width = $options['width'];
+    // echo the field
+    echo "<input id='width' name='rc_cs_options[width]' type='number' value='{$width}' />";
+}
+
+// Display and fill the form field
+function rc_cs_cherry_slider_height_callback() {
+    //get option 'text_string' value from the database
+    $options = get_option( RCSL_OPTIONS_STRING );
+    $height = $options['height'];
+    // echo the field
+    echo "<input id='height' name='rc_cs_options[height]' type='number' value='{$height}' />";
+}
+
 // Validate input
 function rc_cs_cherry_slider_validate_options( $input ) {
     $valid = array();
     $valid['speed'] = preg_replace( '/[^0-9]/', '', $input['speed'] );
     $valid['transition'] = preg_replace( '/[^a-zA-Z]/', '', $input['transition'] );
     $valid['easing'] = preg_replace( '/[^a-zA-Z]/', '', $input['easing'] );
+    $valid['width'] = preg_replace( '/[^0-9]/', '', $input['width'] );
+    $valid['height'] = preg_replace( '/[^0-9]/', '', $input['height'] );
     return $valid;
 }

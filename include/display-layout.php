@@ -31,7 +31,7 @@ if( !isset( $options['height'] ) ) $options['height'] = 300;
 </script>
 <style>
     .sy-slides-wrap {
-        max-height: <?php echo $options['height']; ?>px;
+        max-height: <?php echo ( $options['height'] == '' ? 500 : $options['height']); ?>px;
     }
 </style>
 <?php  if($RCSL_Slide_Title == 1) { ?>
